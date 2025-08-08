@@ -78,6 +78,12 @@ class SpecialMove:
         return [cls._from_db_row(row) for row in rows] if rows else []
     
     @classmethod
+    def find_by_character_id(cls, character_id):
+        CURSOR.execute("SELECT * FROM special_moves WHERE character_id = ?",(character_id,))
+        rows = CURSOR.fetchall()
+        return [cls._from_db_row(row) for row in rows] if rows else []
+    
+    @classmethod
     def get_all(cls):
         CURSOR.execute("SELECT * FROM special_moves")
         rows = CURSOR.fetchall()

@@ -1,5 +1,6 @@
 import sqlite3
 from lib import CONN, CURSOR
+from lib.special_move import SpecialMove
 
 class Combo:
     def __init__(self, pattern):
@@ -45,6 +46,12 @@ class Combo:
         return [cls._from_db_row(row) for row in rows] if rows else []
     
     @classmethod
+    def get_characters(cls):
+        moves = SpecialMove.get_all()
+        print(moves)
+
+    
+    @classmethod
     def add_new(cls, pattern):
         existing = cls.find_by_pattern(pattern)
         if existing:
@@ -68,6 +75,6 @@ class Combo:
             CURSOR.execute("INSERT INTO combos (pattern) VALUES (?)", (self._pattern,))
             CONN.commit()
         except sqlite3.IntegrityError:
-            print("Error: A combo with this names may already exist.")
+            print("Error: A combo with this pattern may already exist.")
             
             
