@@ -10,7 +10,7 @@ class FightingStyle:
         self.id = None
 
     def __repr__(self):
-        return f"Fighting style is {self.style_name} witht he ID# {self.id}"
+        return f"Fighting style is {self.style_name} with the ID# {self.id}"
     
     @property
     def style_name(self):
