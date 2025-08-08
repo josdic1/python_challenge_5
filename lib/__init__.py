@@ -1,12 +1,13 @@
 import sqlite3
 import os
 
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DB_NAME = os.path.join(os.path.dirname(__file__), 'database.db')
 SCHEMA_FILE = os.path.join(os.path.dirname(__file__), 'schema.sql')
 
 def setup_database():
     """Initializes the database by creating tables if they don't exist."""
-    conn = sqlite3.connect('database.db')
+    conn = sqlite3.connect(DB_NAME)
     cursor = conn.cursor()
 
     try:
