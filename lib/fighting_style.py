@@ -36,7 +36,7 @@ class FightingStyle:
         return cls._from_db_row(row) if row else None
 
     @classmethod
-    def find_by_name(cls, style_name):
+    def find_by_style_name(cls, style_name):
         CURSOR.execute("SELECT * FROM fighting_styles WHERE style_name = ?", (style_name,))
         row = CURSOR.fetchone()
         return cls._from_db_row(row) if row else None
@@ -49,7 +49,7 @@ class FightingStyle:
     
     @classmethod
     def add_new(cls, style_name):
-        existing = cls.find_by_name(style_name)
+        existing = cls.find_by_style_name(style_name)
         if existing:
             return existing
         style = cls(style_name)
@@ -58,7 +58,7 @@ class FightingStyle:
         return style
     
     def update(self):
-        CURSOR.execute("UPDATE fighting_styles SET style_name WHERE id = ?",(self._style_name, self.id,))
+        CURSOR.execute("UPDATE fighting_styles SET style_name = ? WHERE id = ?", (self._style_name, self.id,))
         CONN.commit()
 
 

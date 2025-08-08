@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS characters (
 
 CREATE TABLE IF NOT EXISTS fighting_styles (
     id INTEGER PRIMARY KEY,
-    name TEXT
+    style_name TEXT
 );
 
 CREATE TABLE IF NOT EXISTS special_moves (
