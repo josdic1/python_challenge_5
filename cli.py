@@ -12,7 +12,6 @@ def check_db():
         conn = sqlite3.connect(DB_NAME)
         cursor = conn.cursor()
 
-        # Check if at least one table exists
         cursor.execute("SELECT name FROM sqlite_master WHERE type='table';")
         tables = cursor.fetchall()
 
