@@ -4,6 +4,11 @@ IF NOT EXISTS CREATE TABLE characters (
     hometown TEXT
 );
 
+IF NOT EXISTS CREATE TABLE fighting_styles (
+    id INTEGER PRIMARY KEY,
+    name TEXT
+);
+
 IF NOT EXISTS CREATE TABLE special_moves (
     id INTEGER PRIMARY KEY,
     name TEXT,
@@ -12,5 +17,10 @@ IF NOT EXISTS CREATE TABLE special_moves (
     combo_id INTEGER,
     FOREIGN KEY (character_id) REFERENCES characters (id),
     FOREIGN KEY (combo_id) REFERENCES combos (id)
+);
+
+IF NOT EXISTS CREATE TABLE combos (
+    id INTEGER PRIMARY KEY,
+    name TEXT
 );
 
