@@ -78,8 +78,12 @@ class Character:
         CONN.commit()
 
     def save(self):
-        CURSOR.execute("INSERT INTO characters (name, hometown) VALUES (?,?)", (self._name, self._hometown,))
-        CONN.commit()
+        try:
+            CURSOR.execute("INSERT INTO characters (name, hometown) VALUES (?,?)", (self._name, self._hometown,))
+            CONN.commit()
+        except sqlite3.IntegrityError:
+            print("Error: A character with this names may already exist.")
+    
 
 
     
